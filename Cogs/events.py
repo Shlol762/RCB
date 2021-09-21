@@ -1,5 +1,6 @@
 from discord.ext.commands import Cog, Context, Bot
 from discord import Guild
+from Cogs import PATH
 
 
 class Events(Cog):
@@ -9,7 +10,7 @@ class Events(Cog):
 
     @Cog.listener()
     async def on_guild_join(self, guild: Guild):
-        with open("C:/Users/Shlok/RCB/json/prefixes.json", "w") as f:
+        with open(PATH + "/json/prefixes.json", "w") as f:
             pass
         pass
 
