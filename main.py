@@ -31,4 +31,12 @@ async def ping(ctx: commands.Context):
 async def hello(ctx: commands.Context):
     await ctx.reply("Hi there!")
 
+@bot.command(name="Good_morning")
+async def hello(ctx: commands.Context):
+    await ctx.reply("Good morning!")
+
+@bot.command(name="Bye")
+async def hello(ctx: commands.Context):
+    await ctx.reply("Byeee! Take care!")
+
 bot.run(token)
