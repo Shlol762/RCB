@@ -12,6 +12,8 @@ while retry < 5:
         pass
     else:
         break
+    retry+=1
+
 
 
 intents = discord.Intents.all()
