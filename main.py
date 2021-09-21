@@ -5,6 +5,8 @@ from utils import prefix
 retry = 0
 while retry < 5:
     token = input("Specify token file path ")
+    if token == '':
+        token = "C:\\Users\\iamaa\\Downloads\\disc_bot_code.txt"
     try:
         with open(token) as f:
             token = f.read()
@@ -25,5 +27,8 @@ bot = commands.Bot(command_prefix=prefix, intents=intents, case_insensitive=True
 async def ping(ctx: commands.Context):
     await ctx.reply(bot.latency)
 
+@bot.command(name="Hello")
+async def hello(ctx: commands.Context):
+    await ctx.reply("Hi there!")
 
 bot.run(token)
