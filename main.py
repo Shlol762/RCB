@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 from utils import prefix
 
+token = ""
 
 intents = discord.Intents.all()
 
@@ -13,4 +14,4 @@ async def ping(ctx: commands.Context):
     await ctx.reply(bot.latency)
 
 
-bot.run()
+bot.run(token)
