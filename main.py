@@ -1,6 +1,7 @@
 import discord, os
 from discord.ext import commands
 from utils import prefix, PATH
+import random
 
 retry = 0
 while retry < 5:
@@ -17,11 +18,9 @@ while retry < 5:
         break
     retry += 1
 
-
 intents = discord.Intents.all()
 
 bot = commands.Bot(command_prefix=prefix, intents=intents, case_insensitive=True)
-
 
 for cog in os.listdir(PATH + "/Cogs"):
     if cog.endswith(".py") and cog != '__init__.py':
@@ -32,8 +31,15 @@ for cog in os.listdir(PATH + "/Cogs"):
 async def ping(ctx: commands.Context):
     await ctx.reply(bot.latency)
 
+
 @bot.command(name="joke")
 async def joke(ctx: commands.Context):
     await ctx.reply(ctx.author.mention)
+
+
+
+@bot.command(name="toss")
+async def toss(ctx: commands.Context):
+    await ctx.reply()
 
 bot.run(token)
