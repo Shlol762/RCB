@@ -40,6 +40,11 @@ async def joke(ctx: commands.Context):
 
 @bot.command(name="toss")
 async def toss(ctx: commands.Context):
-    await ctx.reply()
+    await ctx.reply(random.choice(["tails", "heads"]))
+
+
+@bot.command(name="8ball")
+async def ball(ctx: commands.Context):
+    await ctx.reply(random.choice(["yes", "no", "maybe", "probably", "probably not", "I'm not sure, try again"]))
 
 bot.run(token)
