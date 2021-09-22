@@ -47,4 +47,10 @@ async def toss(ctx: commands.Context):
 async def ball(ctx: commands.Context):
     await ctx.reply(random.choice(["yes", "no", "maybe", "probably", "probably not", "I'm not sure, try again"]))
 
+
+@bot.command(name="dice")
+async def dice(ctx: commands.Context):
+    await ctx.reply(random.choice(["1", "2", "3", "4", "5", "6"]))
+
+
 bot.run(token)
