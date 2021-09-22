@@ -32,5 +32,8 @@ for cog in os.listdir(PATH + "/Cogs"):
 async def ping(ctx: commands.Context):
     await ctx.reply(bot.latency)
 
+@bot.command(name="joke")
+async def ping(ctx: commands.Context):
+    await ctx.reply(ctx.author.mention)
 
 bot.run(token)
