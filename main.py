@@ -50,7 +50,7 @@ async def ball(ctx: commands.Context):
 
 @bot.command(name="dice")
 async def dice(ctx: commands.Context):
-    await ctx.reply(random.randint(1,6))
+    await ctx.reply("Number is:", random.randint(1,6))
 
 
 bot.run(token)
