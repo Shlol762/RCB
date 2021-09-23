@@ -45,7 +45,8 @@ async def toss(ctx: commands.Context):
 
 @bot.command(name="8ball")
 async def ball(ctx: commands.Context):
-    await ctx.reply(random.choice(["Yes.", "No.", "Maybe.", "Probably.", "Probably not.", "I'm not sure, try again.", "Doubtful.", "Definitely.", "Definitely not."]))
+    embed = discord.Embed(title="8ball", description=random.choice(["Yes.", "No.", "Maybe.", "Probably.", "Probably not.", "I'm not sure, try again.", "Doubtful.", "Definitely.", "Definitely not."]), colour=discord.Colour.random())
+    await ctx.reply(embed=embed)
 
 
 @bot.command(name="dice")
