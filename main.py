@@ -45,13 +45,35 @@ async def toss(ctx: commands.Context):
 
 @bot.command(name="8ball")
 async def ball(ctx: commands.Context):
-    embed = discord.Embed(title="8ball", description=random.choice(["Yes.", "No.", "Maybe.", "Probably.", "Probably not.", "I'm not sure, try again.", "Doubtful.", "Definitely.", "Definitely not."]), colour=discord.Colour.random())
-    await ctx.reply(embed=embed)
+    await ctx.reply(random.choice(["Yes.", "No.", "Maybe.", "Probably.", "Probably not.", "I'm not sure, try again.", "Doubtful.", "Definitely.", "Definitely not."]))
 
 
 @bot.command(name="dice")
 async def dice(ctx: commands.Context):
-    await ctx.reply('Number is:', random.randint(1, 6))
+    await ctx.reply(random.randint(1,6))
+
+
+@bot.command(name="iplteams")
+async def iplteams(ctx: commands.Context):
+    await ctx.reply(['MI',
+                     'CSK',
+                     'KKR',
+                     'SRH',
+                     'RR',
+                     'RCB',
+                     'DC',
+                     'PBKS'])
+
+
+@bot.command(name="iplstats")
+async def iplstats(ctx: commands.Context):
+    await ctx.reply(['Most runs: Virat Kohli',
+
+                    'Most wickets: Lasith Malinga',
+                    'Most sixes: Chris Gayle',
+                    'Best economy: Rashid Khan',
+                    'Most fours: Shikhar Dhawan',
+                    'Most dots: Harbhajan Singh'])
 
 
 bot.run(token)
