@@ -45,12 +45,12 @@ async def toss(ctx: commands.Context):
 
 @bot.command(name="8ball")
 async def ball(ctx: commands.Context):
-    await ctx.reply(random.choice(["yes", "no", "maybe", "probably", "probably not", "I'm not sure, try again"]))
+    await ctx.reply(random.choice(["Yes.", "No.", "Maybe.", "Probably.", "Probably not.", "I'm not sure, try again.", "Doubtful.", "Definitely.", "Definitely not."]))
 
 
 @bot.command(name="dice")
 async def dice(ctx: commands.Context):
-    await ctx.reply(random.choice(["1", "2", "3", "4", "5", "6"]))
+    await ctx.reply(random.randint(1,6))
 
 
 bot.run(token)
