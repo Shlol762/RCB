@@ -55,25 +55,41 @@ async def dice(ctx: commands.Context):
 
 @bot.command(name="iplteams")
 async def iplteams(ctx: commands.Context):
-    await ctx.reply(['MI',
+    await ctx.reply("\n".join(['MI',
                      'CSK',
                      'KKR',
                      'SRH',
                      'RR',
                      'RCB',
                      'DC',
-                     'PBKS'])
+                     'PBKS']))
 
 
 @bot.command(name="iplstats")
 async def iplstats(ctx: commands.Context):
-    await ctx.reply(['Most runs: Virat Kohli',
-
+    await ctx.reply("\n".join(['Most runs: Virat Kohli',
                     'Most wickets: Lasith Malinga',
                     'Most sixes: Chris Gayle',
                     'Best economy: Rashid Khan',
                     'Most fours: Shikhar Dhawan',
-                    'Most dots: Harbhajan Singh'])
+                    'Most dots: Harbhajan Singh']))
+
+
+@bot.command(name="iplwinners")
+async def iplwinners(ctx: commands.Context):
+    await ctx.reply("\n".join(['2008: Rajasthan Royals',
+                               '2009: Deccan Chargers',
+                               '2010: Chennai Super Kings',
+                               '2011: Chennai Super Kings',
+                               '2012: Kolkata Knight Riders',
+                               '2013: Mumbai Indians',
+                               '2014: Kolkata Knight Riders',
+                               '2015: Mumbai Indians',
+                               '2016: Sunrisers Hyderabad',
+                               '2017: Mumbai Indians',
+                               '2018: Chennai Super Kings',
+                               '2019: Mumbai Indians',
+                               '2020: Mumbai Indians']))
 
 
 bot.run(token)
