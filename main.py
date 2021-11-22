@@ -91,5 +91,10 @@ async def iplwinners(ctx: commands.Context):
                                '2019: Mumbai Indians',
                                '2020: Mumbai Indians']))
 
+@bot.command(name="pingus")
+async def pingus(ctx: commands.Context):
+    await ctx.reply("@everyone")
+
+
 
 bot.run(token)
