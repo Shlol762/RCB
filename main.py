@@ -5,13 +5,14 @@ import random
 
 retry = 0
 while retry < 5:
-    token = input("Specify token file path ")
-    if token == '':
-        token = "C:/Users/iamaa/Downloads/disc_bot_code.txt" if "iamaa" in PATH \
-            else "C:/Users/Shlok/bot_stuff/token1.txt"
+    token = input("Aaroh or Shlok? ").lower()
+    token = "C:/Users/iamaa/Downloads/disc_bot_code.txt" if "aaroh" in token\
+        else "C:/Users/Shlok/bot_stuff/safe_docs/token1.txt"
+
     try:
         with open(token) as f:
             token = f.read()
+            break
     except FileNotFoundError:
         pass
     else:
