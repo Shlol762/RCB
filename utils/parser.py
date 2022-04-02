@@ -13,5 +13,6 @@ class IPLT20:
         self.matches_url = soup.find(href=re.compile(r'matches/schedule/men')).get('href')
         self.stats_url = soup.find(href=re.compile(r'stats/')).get('href')
         self.teams_url = soup.find(href=re.compile(r'teams/men')).get('href')
+        self.points_url = soup.find(href=re.compile(r'points-table/men/2022')).get('href')
 
 IPLT20()
