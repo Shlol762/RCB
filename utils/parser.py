@@ -10,7 +10,7 @@ class IPLT20:
     def __init__(self):
         with requests.get(self.root_url) as req:
             soup = BeautifulSoup(req.text, 'lxml')
-            self.matches_url = soup.find(href=re.compile(r'matches/schedule/men')).get('href')
-            self.stats_url = soup.find(href=re.compile(r'stats/2022')).get('href')
+        self.matches_url = soup.find(href=re.compile(r'matches/schedule/men')).get('href')
+        self.stats_url = soup.find(href=re.compile(r'stats/')).get('href')
 
 IPLT20()
