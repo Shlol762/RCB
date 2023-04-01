@@ -2,6 +2,21 @@ import discord, os
 from discord.ext import commands
 from utils import prefix, PATH
 import random
+from asyncio import get_event_loop as get_loop
+import logging
+
+
+log_level = logging.INFO
+log_formatter = discord.utils._ColourFormatter()
+log_handler = logging.StreamHandler()
+log_handler.setFormatter(log_formatter)
+
+log = logging.getLogger(__name__)
+log.addHandler(log_handler)
+log.setLevel(log_level)
+
+log.info('Logging has been set up')
+
 
 retry = 0
 while retry < 5:
@@ -15,8 +30,6 @@ while retry < 5:
             break
     except FileNotFoundError:
         pass
-    else:
-        break
     retry += 1
 
 intents = discord.Intents.all()
@@ -25,7 +38,7 @@ bot = commands.Bot(command_prefix=prefix, intents=intents, case_insensitive=True
 
 for cog in os.listdir(PATH + "/Cogs"):
     if cog.endswith(".py") and cog != '__init__.py':
-        bot.load_extension(f'Cogs.{cog[:-3]}')
+        get_loop().run_until_complete(bot.load_extension(f'Cogs.{cog[:-3]}'))
 
 
 @bot.command(name="Ping")
@@ -98,4 +111,6 @@ async def pingus(ctx: commands.Context):
 
 
 
-bot.run(token)
+
+
+bot.run(token, log_handler=log_handler, log_formatter=log_formatter, log_level=log_level, root_logger = True)

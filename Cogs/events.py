@@ -24,5 +24,5 @@ class Events(Cog):
             await greeting(ctx)
 
 
-def setup(bot: Bot):
-    bot.add_cog(Events(bot))
+async def setup(bot: Bot):
+    await bot.add_cog(Events(bot))
