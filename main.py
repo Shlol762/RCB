@@ -1,6 +1,7 @@
+import datetime
 import discord, os
 from discord.ext import commands
-from utils import prefix, PATH
+from utils import prefix, PATH, IPLT20
 import random
 from asyncio import get_event_loop as get_loop
 import logging
@@ -110,6 +111,13 @@ async def pingus(ctx: commands.Context):
     await ctx.reply("@everyone")
 
 
+@bot.command(name="pointstable", aliases=['ptstbl'])
+async def _points_table(ctx: commands.Context, year: int = datetime.date.today().year):
+    ipl = IPLT20()
+    table = ipl.points_table(year)
+    head, body = table.to_str()
+
+    await ctx.reply(f"```less\n{head}``````nim\n{body}```")
 
 
 
