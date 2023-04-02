@@ -1,3 +1,4 @@
+import requests
 from bs4 import BeautifulSoup, Tag
 import aiohttp
 import asyncio
@@ -52,8 +53,8 @@ class IPLT20:
     ipl_url = '/series/indian-premier-league-2023-1345038'
 
     def __init__(self):
-        loop = asyncio.get_event_loop()
-        soup = loop.run_until_complete(self._fetch_soup(self.root_url + self.ipl_url))
+        with requests.get(self.root_url + self.ipl_url) as req:
+            soup = BeautifulSoup(req.text, 'lxml')
         self.matches_url = self.root_url + soup.find(href=re.compile(r'/match')).get('href')
         self.stats_url = self.root_url + soup.find(href=re.compile(r'/stats')).get('href')
         self.teams_url = self.root_url + soup.find(href=re.compile(r'/squads')).get('href')
