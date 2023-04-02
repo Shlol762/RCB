@@ -114,7 +114,7 @@ async def pingus(ctx: commands.Context):
 @bot.command(name="pointstable", aliases=['ptstbl'])
 async def _points_table(ctx: commands.Context, year: int = datetime.date.today().year):
     ipl = IPLT20()
-    table = ipl.points_table(year)
+    table = await ipl.points_table(year)
     head, body = table.to_str()
 
     await ctx.reply(f"```less\n{head}``````nim\n{body}```")

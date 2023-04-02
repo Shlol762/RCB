@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup, Tag
-import requests
+import aiohttp
+import asyncio
 import re
 import logging
 from typing import List, Union, Tuple
@@ -51,18 +52,23 @@ class IPLT20:
     ipl_url = '/series/indian-premier-league-2023-1345038'
 
     def __init__(self):
-        with requests.get(self.root_url + self.ipl_url) as req:
-            soup = BeautifulSoup(req.text, 'lxml')
+        loop = asyncio.get_event_loop()
+        soup = loop.run_until_complete(self._fetch_soup(self.root_url + self.ipl_url))
         self.matches_url = self.root_url + soup.find(href=re.compile(r'/match')).get('href')
         self.stats_url = self.root_url + soup.find(href=re.compile(r'/stats')).get('href')
         self.teams_url = self.root_url + soup.find(href=re.compile(r'/squads')).get('href')
         self.points_url = self.root_url + soup.find(href=re.compile(r'indian-premier-league-2023-1345038'
                                                                     r'/points-table-standings')).get('href')
 
-    def points_table(self, year: int) -> PointsTable:
+    async def _fetch_soup(self, url: str) -> BeautifulSoup:
+        async with aiohttp.ClientSession() as session:
+            async with session.get(url) as resp:
+                text = await resp.text()
+        return BeautifulSoup(text, 'lxml')
+
+    async def points_table(self, year: int) -> PointsTable:
         self.points_url = self.root_url + self.points_url if 'https' not in self.points_url else self.points_url
-        with requests.get(self.points_url) as req:
-            soup = BeautifulSoup(req.text, 'lxml')
+        soup = await self._fetch_soup(self.points_url)
         team_data: List[Tag] = soup.find_all('tr', class_ = "ds-text-tight-s")
         teams = []
 
